@@ -3,7 +3,7 @@
 
     <test name="Gmail login suite" >
         <classes>
-            <class name="testCases.TestFirstRun"/>
+            <class name="tests.TestFirstRun"/>
         </classes>
     </test>
 

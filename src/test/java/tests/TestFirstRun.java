@@ -1,21 +1,21 @@
-package testCases;
+package tests;
 
 import businessLogic.po.EmailPage;
 import businessLogic.po.MainPage;
 import businessLogic.po.PasswordPage;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static core.chromeDriver.SingletonChromeConnection.getDriver;
-import static core.chromeDriver.SingletonChromeConnection.quitDriver;
 import static core.propertiesParser.PropertiesParser.getProperty;
-public class TestFirstRun {
+
+public class TestFirstRun extends BaseGmailTest {
 
     private EmailPage emailPage = new EmailPage();
     private PasswordPage passwordPage = new PasswordPage();
     private MainPage mainPage = new MainPage();
 
-    @Test
+    @BeforeTest
     public void firstRun() {
         getDriver().navigate().to(getProperty("base.url"));
         emailPage
@@ -24,14 +24,13 @@ public class TestFirstRun {
         passwordPage
                 .setPassword(getProperty("base.password"))
                 .clickNextBtn();
-        mainPage
-                .printAllSubjects();
+     }
 
-    }
-
-    @AfterTest
-    public void closeDriver() {
-        quitDriver();
+    @Test
+    public void sendTestMsg() {
+//        mainPage
+//                .act_clickCompose()
+//                .act_fillReceivers("qwertyu");
     }
 
 }
