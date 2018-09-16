@@ -1,5 +1,7 @@
 package tests;
 
+import businessLogic.businessLogic.bo.BaseGmailBO;
+import businessLogic.models.MailModel;
 import businessLogic.po.EmailPage;
 import businessLogic.po.MainPage;
 import businessLogic.po.PasswordPage;
@@ -14,23 +16,22 @@ public class TestFirstRun extends BaseGmailTest {
     private EmailPage emailPage = new EmailPage();
     private PasswordPage passwordPage = new PasswordPage();
     private MainPage mainPage = new MainPage();
+    private BaseGmailBO baseGmailBO = new BaseGmailBO();
+
+    private MailModel mail;
 
     @BeforeTest
-    public void firstRun() {
+    public void login() {
         getDriver().navigate().to(getProperty("base.url"));
-        emailPage
-                .setLogin(getProperty("base.login"))
-                .clickNextBtn();
-        passwordPage
-                .setPassword(getProperty("base.password"))
-                .clickNextBtn();
+        baseGmailBO.act_login(getProperty("base.login"), getProperty("base.password"));
+        mail = new MailModel(new String [] {"taras.matsyshyn@gmail.com"}, "Test", "Test");
      }
 
     @Test
     public void sendTestMsg() {
-//        mainPage
-//                .act_clickCompose()
-//                .act_fillReceivers("qwertyu");
+        baseGmailBO
+                .act_createMsg(mail)
+                .act_sendMsg();
     }
 
 }

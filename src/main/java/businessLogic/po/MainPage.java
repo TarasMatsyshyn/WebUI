@@ -1,5 +1,6 @@
 package businessLogic.po;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 @Component
 public class MainPage extends PageObject {
+
+    final static Logger logger = Logger.getLogger(MainPage.class);
 
     //Buttons
     @FindBy(xpath = "//div[text()='COMPOSE']")
@@ -37,28 +40,32 @@ public class MainPage extends PageObject {
 
     public MainPage act_clickCompose(){
         btnCompose.click();
+        logger.info("Was clicked on 'Compose' button");
         return this;
     }
 
     public MainPage act_fillReceivers(String receivers){
         ipfTo.sendKeys(receivers);
+        logger.info(String.format("%s was set to 'Receivers' input field", receivers));
         return this;
     }
 
     public MainPage act_fillSubject(String subject){
         ipfSubject.sendKeys(subject);
+        logger.info(String.format("%s was set to 'Subject' input field", subject));
         return this;
     }
 
     public MainPage act_fillMsgBody(String msgBody){
         ipfMsgBody.sendKeys(msgBody);
+        logger.info(String.format("%s was set to 'Message body' input field", msgBody));
         return this;
     }
 
     public MainPage act_clickSendMsg(){
         btnSend.click();
+        logger.info("Was clicked on 'Send' button");
         return this;
     }
-
 
 }
