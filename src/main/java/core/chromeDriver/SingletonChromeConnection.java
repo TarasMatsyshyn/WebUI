@@ -1,5 +1,7 @@
 package core.chromeDriver;
 
+import businessLogic.po.MainPage;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -10,6 +12,8 @@ import static core.propertiesParser.PropertiesParser.getProperty;
 public class SingletonChromeConnection {
 
     private static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
+    private final static Logger logger = Logger.getLogger(MainPage.class);
+
 
     public static ChromeDriver getDriver() {
         if (webDriverThreadLocal.get() != null) {
@@ -27,11 +31,13 @@ public class SingletonChromeConnection {
     }
 
     public static void quitDriver() {
+        logger.info("Try quit driver");
         try {
             webDriverThreadLocal.get().quit();
         } finally {
             webDriverThreadLocal.remove();
         }
+        logger.info("Driver closed successfully");
     }
 
 }

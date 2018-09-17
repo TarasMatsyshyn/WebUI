@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Example suite 1" verbose="1" parallel="methods" thread-count="1" >
+<suite name="Example suite" verbose="1" parallel="methods" thread-count="1" >
 
     <test name="Gmail login suite" >
         <classes>
-            <class name="tests.TestFirstRun"/>
+            <class name="tests.SendMessageTest"/>
         </classes>
     </test>
 

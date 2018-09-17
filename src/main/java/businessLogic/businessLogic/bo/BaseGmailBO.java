@@ -1,19 +1,19 @@
 package businessLogic.businessLogic.bo;
 
 import businessLogic.models.MailModel;
-import businessLogic.po.EmailPage;
-import businessLogic.po.MainPage;
-import businessLogic.po.PasswordPage;
+import businessLogic.po.*;
 
 
 public class BaseGmailBO {
 
-    private EmailPage emailPage = new EmailPage();
+    private LoginPage loginPage = new LoginPage();
     private PasswordPage passwordPage = new PasswordPage();
     private MainPage mainPage = new MainPage();
+    private NavigationPanel navigationPanel = new NavigationPanel();
+    private MailPanel messagePanel = new MailPanel();
 
     public BaseGmailBO act_login(String email, String password) {
-        emailPage
+        loginPage
                 .setLogin(email)
                 .clickNextBtn();
         passwordPage
@@ -23,27 +23,24 @@ public class BaseGmailBO {
     }
 
     public BaseGmailBO act_createMsg(MailModel mail){
+        navigationPanel
+                .act_clickComposeBtn();
         mainPage
-                .act_clickCompose()
-                .act_fillReceivers(mail.getRecipientsString())
-                .act_fillSubject(mail.getSubject())
-                .act_fillMsgBody(mail.getMessageBody());
+                .act_fillMailReceivers(mail.getRecipientsString())
+                .act_fillMailSubject(mail.getSubject())
+                .act_fillMailMsgBody(mail.getMessageBody());
         return this;
     }
 
     public BaseGmailBO act_sendMsg(){
-        mainPage.act_clickSendMsg();
+        mainPage.act_clickSendMailBtn();
         return this;
     }
 
-    public BaseGmailBO ver_msgBody(){
-
+    public BaseGmailBO act_openSentMail(String subject) {
+        navigationPanel.act_clickSentMailBtn();
+        messagePanel.act_openMailBySubject(subject);
         return this;
     }
-
-
-
-
-
 
 }

@@ -10,11 +10,9 @@ import java.util.List;
 @Component
 public class MainPage extends PageObject {
 
-    final static Logger logger = Logger.getLogger(MainPage.class);
+    private final static Logger logger = Logger.getLogger(MainPage.class);
 
     //Buttons
-    @FindBy(xpath = "//div[text()='COMPOSE']")
-    private WebElement btnCompose;
     @FindBy(xpath = "//div[text()='Send']")
     private WebElement btnSend;
     //Msg creation
@@ -38,31 +36,25 @@ public class MainPage extends PageObject {
         return this;
     }
 
-    public MainPage act_clickCompose(){
-        btnCompose.click();
-        logger.info("Was clicked on 'Compose' button");
-        return this;
-    }
-
-    public MainPage act_fillReceivers(String receivers){
+    public MainPage act_fillMailReceivers(String receivers){
         ipfTo.sendKeys(receivers);
-        logger.info(String.format("%s was set to 'Receivers' input field", receivers));
+        logger.info(String.format("%s typed to 'Receivers' input field", receivers));
         return this;
     }
 
-    public MainPage act_fillSubject(String subject){
+    public MainPage act_fillMailSubject(String subject){
         ipfSubject.sendKeys(subject);
-        logger.info(String.format("%s was set to 'Subject' input field", subject));
+        logger.info(String.format("%s typed to 'Subject' input field", subject));
         return this;
     }
 
-    public MainPage act_fillMsgBody(String msgBody){
+    public MainPage act_fillMailMsgBody(String msgBody){
         ipfMsgBody.sendKeys(msgBody);
-        logger.info(String.format("%s was set to 'Message body' input field", msgBody));
+        logger.info(String.format("%s typed to 'Message body' input field", msgBody));
         return this;
     }
 
-    public MainPage act_clickSendMsg(){
+    public MainPage act_clickSendMailBtn(){
         btnSend.click();
         logger.info("Was clicked on 'Send' button");
         return this;
