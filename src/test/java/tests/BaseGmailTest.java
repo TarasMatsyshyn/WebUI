@@ -14,17 +14,24 @@ public class BaseGmailTest {
 
     protected String timeStamp = String.valueOf(Calendar.getInstance().getTimeInMillis());
     private BaseGmailBO baseGmailBO = new BaseGmailBO();
+    private boolean event = false;
 
-    @BeforeTest
-    public void login() {
-        getDriver().navigate().to(getProperty("base.url"));
-        baseGmailBO.act_login(getProperty("base.login"), getProperty("base.password"));
-    }
+//    @BeforeTest
+//    public void login() {
+//        getDriver().navigate().to(getProperty("base.url"));
+//    }
 
     @AfterTest
     public void closeDriver() {
         quitDriver();
     }
 
+    protected void waitForEvent(){
+        while (!event){}
+    }
+
+    protected void publishEvent(){
+        event = true;
+    }
 
 }
