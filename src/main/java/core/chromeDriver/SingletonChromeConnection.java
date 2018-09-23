@@ -1,6 +1,6 @@
 package core.chromeDriver;
 
-import businessLogic.po.MainPage;
+import businessLogic.po.MainBasePagePO;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,7 +12,7 @@ import static core.propertiesParser.PropertiesParser.getProperty;
 public class SingletonChromeConnection {
 
     private static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
-    private final static Logger logger = Logger.getLogger(MainPage.class);
+    private final static Logger logger = Logger.getLogger(MainBasePagePO.class);
 
 
     public static ChromeDriver getDriver() {

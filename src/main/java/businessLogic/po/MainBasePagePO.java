@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 @Component
-public class MainPage extends PageObject {
+public class MainBasePagePO extends BasePageObject {
 
-    private final static Logger logger = Logger.getLogger(MainPage.class);
+    private final static Logger logger = Logger.getLogger(MainBasePagePO.class);
 
     //Buttons
     @FindBy(xpath = "//div[text()='Send']")
@@ -31,30 +31,30 @@ public class MainPage extends PageObject {
     @FindAll(@FindBy(xpath = "//div[@class = 'yW']//span[@name = 'Команда Gmail']"))
     private List<WebElement> namedMails;
 
-    public MainPage printAllSubjects(){
+    public MainBasePagePO printAllSubjects(){
         mails.forEach(item -> System.out.println(item.getText()));
         return this;
     }
 
-    public MainPage act_fillMailReceivers(String receivers){
+    public MainBasePagePO act_fillMailReceivers(String receivers){
         ipfTo.sendKeys(receivers);
         logger.info(String.format("%s typed to 'Receivers' input field", receivers));
         return this;
     }
 
-    public MainPage act_fillMailSubject(String subject){
+    public MainBasePagePO act_fillMailSubject(String subject){
         ipfSubject.sendKeys(subject);
         logger.info(String.format("%s typed to 'Subject' input field", subject));
         return this;
     }
 
-    public MainPage act_fillMailMsgBody(String msgBody){
+    public MainBasePagePO act_fillMailMsgBody(String msgBody){
         ipfMsgBody.sendKeys(msgBody);
         logger.info(String.format("%s typed to 'Message body' input field", msgBody));
         return this;
     }
 
-    public MainPage act_clickSendMailBtn(){
+    public MainBasePagePO act_clickSendMailBtn(){
         btnSend.click();
         logger.info("Was clicked on 'Send' button");
         return this;

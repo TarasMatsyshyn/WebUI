@@ -6,9 +6,10 @@ import businessLogic.po.*;
 
 public class BaseGmailBO {
 
-    private LoginPage loginPage = new LoginPage();
-    private PasswordPage passwordPage = new PasswordPage();
-    private MainPage mainPage = new MainPage();
+    private LoginPagePO loginPage = new LoginPagePO();
+    private PasswordPagePO passwordPage = new PasswordPagePO();
+    private MainBasePagePO mainPage = new MainBasePagePO();
+    private OpenMailPO openMail = new OpenMailPO();
     private NavigationPanel navigationPanel = new NavigationPanel();
     private MailPanel messagePanel = new MailPanel();
 
@@ -41,6 +42,10 @@ public class BaseGmailBO {
         navigationPanel.act_clickSentMailBtn();
         messagePanel.act_openMailBySubject(subject);
         return this;
+    }
+
+    public MailModel get_currentMailModel(){
+        return new MailModel(new String[]{}, openMail.get_mailSubject(), openMail.get_mailBody());
     }
 
 }

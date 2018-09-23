@@ -1,24 +1,16 @@
 package businessLogic.po;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.By;
 
-import java.util.List;
+import static core.chromeDriver.SingletonChromeConnection.getDriver;
 
-public class MailPanel extends PageObject{
+public class MailPanel extends BasePageObject {
 
-    private final static Logger logger = Logger.getLogger(MainPage.class);
-
-    @FindAll(@FindBy(xpath = "//div[@class='AO']//tr"))
-    private List<WebElement> mails;
+    private final static Logger logger = Logger.getLogger(MainBasePagePO.class);
 
     public MailPanel act_openMailBySubject(String subject) {
-        mails.forEach(item -> {
-            if (item.getText().contains(subject)) item.click();
-            return;
-        });
+        getDriver().findElement(By.xpath(String.format("//span[text()='%s']", subject))).click();
         logger.info(String.format("Was clicked on %s subject", subject));
         return this;
     }

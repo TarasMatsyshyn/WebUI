@@ -4,9 +4,9 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class NavigationPanel extends PageObject {
+public class NavigationPanel extends BasePageObject {
 
-    private final static Logger logger = Logger.getLogger(LoginPage.class);
+    private final static Logger logger = Logger.getLogger(LoginPagePO.class);
 
     @FindBy(xpath = "//div[text()='COMPOSE']")
     private WebElement btnCompose;

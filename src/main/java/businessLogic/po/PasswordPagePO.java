@@ -7,16 +7,16 @@ import org.openqa.selenium.support.FindBy;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PasswordPage extends PageObject {
+public class PasswordPagePO extends BasePageObject {
 
-    private final static Logger logger = Logger.getLogger(PasswordPage.class);
+    private final static Logger logger = Logger.getLogger(PasswordPagePO.class);
 
     @FindBy(xpath = "//input[@type='password']")
     private WebElement ipfPassword;
     @FindBy(id = "passwordNext")
     private WebElement btnNext;
 
-    public PasswordPage setPassword(String login) {
+    public PasswordPagePO setPassword(String login) {
         boolean staleElement = true;
         while (staleElement) {
             try {
@@ -30,7 +30,7 @@ public class PasswordPage extends PageObject {
         return this;
     }
 
-    public PasswordPage clickNextBtn() {
+    public PasswordPagePO clickNextBtn() {
         btnNext.click();
         logger.info("Was clicked on 'Next' button");
         return this;

@@ -4,14 +4,14 @@ import core.chromeDriver.SingletonChromeConnection;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class PageObject {
+public class BasePageObject {
 
-    public PageObject(WebDriver driver) {
+    public BasePageObject(WebDriver driver) {
         WebDriver instance = SingletonChromeConnection.getDriver();
         PageFactory.initElements(instance, this);
     }
 
-    public PageObject() {
+    public BasePageObject() {
         this(SingletonChromeConnection.getDriver());
     }
 }
