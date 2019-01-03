@@ -1,4 +1,4 @@
-package businessLogic.businessLogic.bo;
+package businessLogic.bo;
 
 import businessLogic.models.MailModel;
 import businessLogic.po.*;
@@ -38,7 +38,7 @@ public class BaseGmailBO {
         return this;
     }
 
-    public BaseGmailBO act_openSentMail(String subject) {
+    public BaseGmailBO act_openSentEmail(String subject) {
         navigationPanel.act_clickSentMailBtn();
         messagePanel.act_openMailBySubject(subject);
         return this;

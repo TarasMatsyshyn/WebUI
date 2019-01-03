@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class OpenMailPO extends BasePageObject {
+public class OpenMailPO extends BasePO {
 
     private final static Logger logger = Logger.getLogger(OpenMailPO.class);
 

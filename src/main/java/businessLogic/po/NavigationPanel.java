@@ -1,18 +1,19 @@
 package businessLogic.po;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class NavigationPanel extends BasePageObject {
+public class NavigationPanel extends BasePO {
 
     private final static Logger logger = Logger.getLogger(LoginPagePO.class);
 
-    @FindBy(xpath = "//div[text()='COMPOSE']")
+    @FindBy(xpath = "//div[text()='Compose']")
     private WebElement btnCompose;
     @FindBy(xpath = "//a[contains(text(),'Inbox')]")
     private WebElement btnInbox;
-    @FindBy(xpath = "//div[@data-tooltip='Sent Mail']")
+    @FindBy(xpath = "//a[text()='Sent']")
     private WebElement btnSentMail;
     @FindBy(xpath = "//div[@data-tooltip='Drafts']")
     private WebElement btnDrafts;
@@ -30,7 +31,16 @@ public class NavigationPanel extends BasePageObject {
     }
 
     public NavigationPanel act_clickSentMailBtn(){
-        btnSentMail.click();
+        boolean staleElement = true;
+        while (staleElement) {
+            try {
+                btnSentMail.click();
+                staleElement = false;
+            } catch (StaleElementReferenceException e) {
+                logger.warn("Caught 'Stale Element Reference exception'");
+                staleElement = true;
+            }
+        }
         logger.info("Was clicked on 'Sent mail' button");
         return this;
     }

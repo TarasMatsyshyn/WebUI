@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PasswordPagePO extends BasePageObject {
+public class PasswordPagePO extends BasePO {
 
     private final static Logger logger = Logger.getLogger(PasswordPagePO.class);
 
@@ -23,6 +23,7 @@ public class PasswordPagePO extends BasePageObject {
                 ipfPassword.sendKeys(login);
                 staleElement = false;
             } catch (StaleElementReferenceException e) {
+                logger.warn("Caught 'Stale Element Reference exception'");
                 staleElement = true;
             }
         }

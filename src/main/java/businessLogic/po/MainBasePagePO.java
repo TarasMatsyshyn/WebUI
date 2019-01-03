@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 @Component
-public class MainBasePagePO extends BasePageObject {
+public class MainBasePagePO extends BasePO {
 
     private final static Logger logger = Logger.getLogger(MainBasePagePO.class);
 

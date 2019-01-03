@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LoginPagePO extends BasePageObject {
+public class LoginPagePO extends BasePO {
 
     private final static Logger logger = Logger.getLogger(LoginPagePO.class);
 

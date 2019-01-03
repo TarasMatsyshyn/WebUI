@@ -1,6 +1,6 @@
 package tests;
 
-import businessLogic.businessLogic.bo.BaseGmailBO;
+import businessLogic.bo.BaseGmailBO;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
